@@ -12,24 +12,27 @@ class NearestNeighborClassification(object):
     self.x, self.y = x, y
 
   def predict(self, x):
-    batch_size = self.batch_size
-    x1 = self.x[np.newaxis]
-    x2 = x[:, np.newaxis]
-    x_dims = tuple(range(len(x2.shape))[2:])
-    y_ = []
+    y_ = np.zeros((x.shape[0],))
 
-    for i in range(0, x.shape[0], batch_size):
-      end = i+batch_size if (i+batch_size)<x2.shape[0] else None
-      ind = np.abs(x1-x2[i:end]).sum(x_dims).argmin(1)
-      y_.append(self.y[ind])
+    ### YOUR SOLUTION ###
 
-    y_ = np.array(y_)
     return np.concatenate(y_)
 
+
   def get_params(self, deep=True):
+    """
+    Just here to follow sklearn standard, so it can be used along with library functions
+    :param deep:
+    :return : empty dict
+    """
     return {}
 
   def set_params(self, **prameters):
+    """
+    Just here to follow sklearn standard, so it can be used along with library functions
+    :param prameters:
+    :return: None
+    """
     pass
 
 
@@ -41,9 +44,6 @@ def evaluate_knn(k, n_samples=100, n_features=300, n_informative=5):
                                           0,
                                           random_state=1)
   accuracy = 0
-  clf = KNeighborsClassifier(k)
-  clf.fit(X_1, y_1)
-  accuracy = (clf.predict(X_1) == y_1).mean()
   return accuracy
 
 
@@ -54,9 +54,8 @@ def evaluate_knn_crossval(k, n_samples=100, n_features=300, n_informative=5):
                                           n_redundant=2 if (n_features-n_informative)>2 else
                                           0,
                                           random_state=1)
-  from sklearn.model_selection import cross_val_score
-  clf = KNeighborsClassifier(k)
-  return cross_val_score(clf, X_1, y_1, cv=5).mean()
+  accuracy = 0
+  return accuracy
 
 
 def plot_classification(data, labels, clf):
@@ -76,6 +75,7 @@ def plot_classification(data, labels, clf):
   for i, c in enumerate(np.unique(labels)):
     c_indices = labels == c
     plt.scatter(data[c_indices, 0], data[c_indices, 1], c=colors[i%len(colors)])
+
 
 def main():
   from sklearn.model_selection import cross_val_predict
