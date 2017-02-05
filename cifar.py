@@ -2,7 +2,7 @@ import cPickle
 import numpy as np
 
 
-def load_cifar_file(path):
+def load_cifar_file(path='./input/data_batch_1'):
     data_file = open(path)
     data_dict = cPickle.load(data_file)
 
@@ -13,7 +13,7 @@ def load_cifar_file(path):
       labels = np.array(data_dict['labels'])
     return images, labels
 
-def load_cifar(path='/hom/sigmunjr/Public/'):
+def load_cifar(path='./input'):
   images = []; labels= []
   for batch_name in ('data_batch_1', 'data_batch_2', 'data_batch_3', 'data_batch_4', 'data_batch_5', 'test_batch'):
     i, l = load_cifar_file(path + '/' + batch_name)
@@ -22,4 +22,4 @@ def load_cifar(path='/hom/sigmunjr/Public/'):
 
 
 if __name__ == '__main__':
-    load_cifar('/home/sigmund/Downloads/cifar-10-batches-py')
+    load_cifar('./input')
