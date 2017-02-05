@@ -1,6 +1,6 @@
 # INF5860_uke3
 
-Hent koden til oppgavene med:
+Get the code with the exercises with:
 
     git clone https://github.com/sigmunjr/INF5860_uke3.git
 
