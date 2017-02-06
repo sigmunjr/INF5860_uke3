@@ -12,7 +12,7 @@ To begin start a jupyter notebook by running:
 
 If you are on a UiO computer and don't have jupyter, you can run:
 
-    /ifi/asgard/a05/sigmunjr/Public/jupyter notebook INF5860_uke3.ipynb
+    /hom/sigmunjr/anaconda/bin/jupyter notebook INF5860_uke3.ipynb
 
 
 from the project folder *INF5860_uke3*.
