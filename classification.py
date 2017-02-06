@@ -83,7 +83,7 @@ def main():
 
   clf = NearestNeighborClassification()
   data = load_breast_cancer()
-  x, y = data.data. data.target
+  x, y = data.data, data.target
   print (cross_val_predict(clf, x, y)==y).mean()
 
 
